@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h" />
+    <Extern href="vsshlids.h" />
+
+    <Commands package="package">
+        <Menus>
+            <Menu guid="commandSet" id="submenu" priority="0x0100" type="Menu">
+                <Parent guid="commandSet" id="toolsGroup" />
+                <Strings>
+                    <ButtonText>Ben's Tools</ButtonText>
+                    <CanonicalName>BensTools</CanonicalName>
+                </Strings>
+            </Menu>
+        </Menus>
+
+        <Groups>
+            <Group guid="commandSet" id="toolsGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+            </Group>
+
+            <Group guid="commandSet" id="menuGroup" priority="0x0601">
+                <Parent guid="commandSet" id="submenu" />
+            </Group>
+        </Groups>
+
+        <Buttons>
+            <Button guid="commandSet" id="gitExtensions" priority="0x0100" type="Button">
+                <Parent guid="commandSet" id="menuGroup" />
+                <Icon guid="imageManifest" id="gitExtensions" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>Git Extensions</ButtonText>
+                    <CanonicalName>GitExtensions</CanonicalName>
+                </Strings>
+            </Button>
+
+            <Button guid="commandSet" id="totalCommander" priority="0x0101" type="Button">
+                <Parent guid="commandSet" id="menuGroup" />
+                <Icon guid="imageManifest" id="totalCommander" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>Total Commander</ButtonText>
+                    <CanonicalName>TotalCommander</CanonicalName>
+                </Strings>
+            </Button>
+            
+            <Button guid="commandSet" id="gitHub" priority="0x0102" type="Button">
+                <Parent guid="commandSet" id="menuGroup" />
+                <Icon guid="imageManifest" id="gitHub" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>GitHub</ButtonText>
+                    <CanonicalName>GitHub</CanonicalName>
+                </Strings>
+            </Button>
+            
+            <Button guid="commandSet" id="bitbucket" priority="0x0103" type="Button">
+                <Parent guid="commandSet" id="menuGroup" />
+                <Icon guid="imageManifest" id="bitbucket" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>Bitbucket</ButtonText>
+                    <CanonicalName>Bitbucket</CanonicalName>
+                </Strings>
+            </Button>
+        </Buttons>
+    </Commands>
+
+    <Symbols>
+        <GuidSymbol name="package" value="{5ab74aa4-0959-41d9-a8a4-ea5dfc612111}" />
+
+        <GuidSymbol name="commandSet" value="{61da83b2-5868-4375-9649-92d5e4fabdcc}">
+            <IDSymbol name="toolsGroup" value="0x1022" />
+            <IDSymbol name="submenu" value="0x1021" />
+            <IDSymbol name="menuGroup" value="0x1020" />
+            
+            <IDSymbol name="gitExtensions" value="0x0101" />
+            <IDSymbol name="totalCommander" value="0x0102" />
+            <IDSymbol name="gitHub" value="0x0103" />
+            <IDSymbol name="bitbucket" value="0x0104" />
+        </GuidSymbol>
+        
+        <GuidSymbol name="imageManifest" value="{07BDF4A9-DEBF-4D4C-AF57-6350FEBCC6CB}">
+            <IDSymbol name="gitExtensions" value="1" />
+            <IDSymbol name="totalCommander" value="2" />
+            <IDSymbol name="gitHub" value="3" />
+            <IDSymbol name="bitbucket" value="4" />
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>

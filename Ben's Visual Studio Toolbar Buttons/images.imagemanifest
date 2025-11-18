@@ -6,11 +6,11 @@
 
     <Symbols>
         <String Name="Resources" Value="/Aldaviva.VisualStudioToolbarButtons;Component/Resources" />
-        <Guid Name="MyImageManifestGuid" Value="{07BDF4A9-DEBF-4D4C-AF57-6350FEBCC6CB}" />
+        <Guid Name="imageManifest" Value="{07BDF4A9-DEBF-4D4C-AF57-6350FEBCC6CB}" />
     </Symbols>
 
     <Images>
-        <Image Guid="$(MyImageManifestGuid)" ID="1" AllowColorInversion="false">
+        <Image Guid="$(imageManifest)" ID="1" AllowColorInversion="false">
             <Source Uri="$(Resources)/gitextensions-16.png">
                 <Size Value="16" />
             </Source>
@@ -28,7 +28,7 @@
             </Source>
         </Image>
 
-        <Image Guid="$(MyImageManifestGuid)" ID="2" AllowColorInversion="false">
+        <Image Guid="$(imageManifest)" ID="2" AllowColorInversion="false">
             <Source Uri="$(Resources)/totalcommander-16.png">
                 <Size Value="16" />
             </Source>
@@ -42,7 +42,14 @@
                 <Size Value="48" />
             </Source>
         </Image>
-    </Images>
 
-    <ImageLists />
+        <Image Guid="$(imageManifest)" ID="3">
+            <Source Uri="$(Resources)/github-light.xaml" Background="Light" />
+            <Source Uri="$(Resources)/github-dark.xaml" Background="Dark" />
+        </Image>
+        
+        <Image Guid="$(imageManifest)" ID="4" AllowColorInversion="false">
+            <Source Uri="$(Resources)/bitbucket.xaml" />
+        </Image>
+    </Images>
 </ImageManifest>

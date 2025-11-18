@@ -1,6 +1,11 @@
+#nullable enable
+
 using Aldaviva.VisualStudioToolbarButtons.Commands;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
@@ -29,11 +34,8 @@ namespace Aldaviva.VisualStudioToolbarButtons;
 [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 [Guid(PACKAGE_GUID_STRING)]
 [ProvideMenuResource("Menus.ctmenu", 1)]
-public sealed class BensVisualStudioToolbarButtonsPackage: AsyncPackage {
+public sealed class MyPackage: AsyncPackage {
 
-    /// <summary>
-    /// Ben_s_Visual_Studio_Toolbar_ButtonsPackage GUID string.
-    /// </summary>
     public const string PACKAGE_GUID_STRING = "5ab74aa4-0959-41d9-a8a4-ea5dfc612111";
 
     #region Package Members
@@ -49,8 +51,14 @@ public sealed class BensVisualStudioToolbarButtonsPackage: AsyncPackage {
         // When initialized asynchronously, the current thread may be a background thread at this point.
         // Do any initialization that requires the UI thread after switching to the UI thread.
         await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-        await GitExtensions.InitializeAsync(this);
-        await TotalCommander.InitializeAsync(this);
+
+        OleMenuCommandService commandService = (OleMenuCommandService) (await GetServiceAsync(typeof(IMenuCommandService)))!;
+        DTE2                  dte            = (DTE2) (await GetServiceAsync(typeof(DTE)))!;
+
+        new GitExtensions { extensionPackage  = this, dte = dte }.register(commandService);
+        new TotalCommander { extensionPackage = this, dte = dte }.register(commandService);
+        new GitHub { extensionPackage         = this, dte = dte }.register(commandService);
+        new Bitbucket { extensionPackage      = this, dte = dte }.register(commandService);
     }
 
     #endregion
