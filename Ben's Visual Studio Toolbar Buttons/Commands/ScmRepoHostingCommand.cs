@@ -1,11 +1,11 @@
 #nullable enable
 
+using Aldaviva.VisualStudioToolbarButtons.Dependencies.Unfucked;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Unfucked;
 
 namespace Aldaviva.VisualStudioToolbarButtons.Commands;
 
@@ -21,7 +21,7 @@ internal abstract class ScmRepoHostingCommand: AbstractButtonCommand {
 
     protected override async Task onClick() {
         string? hostingUrl = null;
-        if (getSolutionDir() is {} solutionDir) {
+        if (fetchSolutionDir() is {} solutionDir) {
             string upstreamName = await execGit(["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
                 workingDirectory: solutionDir, cancellationToken: disposed);
 
@@ -34,14 +34,14 @@ internal abstract class ScmRepoHostingCommand: AbstractButtonCommand {
             try {
                 Uri url = new(upstreamUrl);
                 if (url.Host == hostname) {
-                    hostingPath = url.LocalPath.TrimEnd(".git");
+                    hostingPath = url.LocalPath;
                 }
             } catch (UriFormatException) {
-                hostingPath = upstreamUrl.Substring(upstreamUrl.IndexOf(':') + 1).TrimEnd(".git");
+                hostingPath = upstreamUrl.Substring(upstreamUrl.IndexOf(':') + 1);
             }
 
             if (hostingPath is not null) {
-                string[] hostingPaths = hostingPath.Split(['/'], 3, StringSplitOptions.RemoveEmptyEntries);
+                string[] hostingPaths = hostingPath.TrimEnd(1, ".git").Split(['/'], 3, StringSplitOptions.RemoveEmptyEntries);
 
                 hostingUrl = repoWebUrl(hostingPaths[0], hostingPaths[1]);
 

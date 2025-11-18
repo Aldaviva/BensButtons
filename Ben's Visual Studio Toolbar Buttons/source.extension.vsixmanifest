@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="BensVisualStudioToolbarButtons.94cf4a43-0e5c-4af3-8321-41df2e49153c" Version="1.0.0" Language="en-US" Publisher="Ben Hutchison" />
+        <Identity Id="94cf4a43-0e5c-4af3-8321-41df2e49153c" Version="1.0.0" Language="en-US" Publisher="Ben Hutchison" />
         <DisplayName>Ben's Visual Studio Toolbar Buttons</DisplayName>
-        <Description xml:space="preserve">Add custom buttons to the Visual Studio toolbar.</Description>
+        <Description xml:space="preserve">Add custom buttons to the Visual Studio toolbar.
+
+The following commands can be found in the Tools menu, and you can add them to toolbars:
+- Bitbucket
+- Git Extensions
+- GitHub
+- Sublime Text
+- Total Commander</Description>
+        <License>License.txt</License>
         <Icon>ben.ico</Icon>
+        <Tags>toolbar button totalcommander sublimetext bitbucket github gitextensions</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, )">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Version="[17.0,)" Id="Microsoft.VisualStudio.Community">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,)">
             <ProductArchitecture>arm64</ProductArchitecture>
         </InstallationTarget>
     </Installation>

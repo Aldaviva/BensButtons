@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
-namespace Unfucked;
+namespace Aldaviva.VisualStudioToolbarButtons.Dependencies.Unfucked;
 
 /*
  * This file is copied from Aldaviva/Unfucked because NuGet package dependencies can't be loaded in VSIX Visual Studio Extensions.

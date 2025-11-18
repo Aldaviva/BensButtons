@@ -6,6 +6,7 @@
 
     <Commands package="package">
         <Menus>
+            <!-- The Ben's Tools submenu in the VS Tools menu -->
             <Menu guid="commandSet" id="submenu" priority="0x0100" type="Menu">
                 <Parent guid="commandSet" id="toolsGroup" />
                 <Strings>
@@ -16,18 +17,20 @@
         </Menus>
 
         <Groups>
+            <!-- A group containing the Ben's Tools submenu in the VS Tools menu -->
             <Group guid="commandSet" id="toolsGroup" priority="0x0600">
                 <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
             </Group>
 
-            <Group guid="commandSet" id="menuGroup" priority="0x0601">
+            <!-- All the buttons in the Ben's Tools submenu -->
+            <Group guid="commandSet" id="submenuGroup" priority="0x0601">
                 <Parent guid="commandSet" id="submenu" />
             </Group>
         </Groups>
 
         <Buttons>
-            <Button guid="commandSet" id="gitExtensions" priority="0x0100" type="Button">
-                <Parent guid="commandSet" id="menuGroup" />
+            <Button guid="commandSet" id="gitExtensions" priority="0x0101" type="Button">
+                <Parent guid="commandSet" id="submenuGroup" />
                 <Icon guid="imageManifest" id="gitExtensions" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
@@ -36,8 +39,8 @@
                 </Strings>
             </Button>
 
-            <Button guid="commandSet" id="totalCommander" priority="0x0101" type="Button">
-                <Parent guid="commandSet" id="menuGroup" />
+            <Button guid="commandSet" id="totalCommander" priority="0x0104" type="Button">
+                <Parent guid="commandSet" id="submenuGroup" />
                 <Icon guid="imageManifest" id="totalCommander" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
@@ -47,7 +50,7 @@
             </Button>
             
             <Button guid="commandSet" id="gitHub" priority="0x0102" type="Button">
-                <Parent guid="commandSet" id="menuGroup" />
+                <Parent guid="commandSet" id="submenuGroup" />
                 <Icon guid="imageManifest" id="gitHub" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
@@ -56,8 +59,8 @@
                 </Strings>
             </Button>
             
-            <Button guid="commandSet" id="bitbucket" priority="0x0103" type="Button">
-                <Parent guid="commandSet" id="menuGroup" />
+            <Button guid="commandSet" id="bitbucket" priority="0x0100" type="Button">
+                <Parent guid="commandSet" id="submenuGroup" />
                 <Icon guid="imageManifest" id="bitbucket" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
@@ -65,28 +68,48 @@
                     <CanonicalName>Bitbucket</CanonicalName>
                 </Strings>
             </Button>
+            
+            <Button guid="commandSet" id="sublimeText" priority="0x0103" type="Button">
+                <Parent guid="commandSet" id="submenuGroup" />
+                <Icon guid="imageManifest" id="sublimeText" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <Strings>
+                    <ButtonText>Sublime Text</ButtonText>
+                    <CanonicalName>SublimeText</CanonicalName>
+                </Strings>
+            </Button>
+            
+            <!-- Add new buttons here -->
         </Buttons>
     </Commands>
 
     <Symbols>
         <GuidSymbol name="package" value="{5ab74aa4-0959-41d9-a8a4-ea5dfc612111}" />
 
+        <!-- Command IDs -->
         <GuidSymbol name="commandSet" value="{61da83b2-5868-4375-9649-92d5e4fabdcc}">
             <IDSymbol name="toolsGroup" value="0x1022" />
             <IDSymbol name="submenu" value="0x1021" />
-            <IDSymbol name="menuGroup" value="0x1020" />
+            <IDSymbol name="submenuGroup" value="0x1020" />
             
             <IDSymbol name="gitExtensions" value="0x0101" />
             <IDSymbol name="totalCommander" value="0x0102" />
             <IDSymbol name="gitHub" value="0x0103" />
             <IDSymbol name="bitbucket" value="0x0104" />
+            <IDSymbol name="sublimeText" value="0x0105" />
+            
+            <!-- Add new buttons here -->
         </GuidSymbol>
         
+        <!-- Image IDs -->
         <GuidSymbol name="imageManifest" value="{07BDF4A9-DEBF-4D4C-AF57-6350FEBCC6CB}">
             <IDSymbol name="gitExtensions" value="1" />
             <IDSymbol name="totalCommander" value="2" />
             <IDSymbol name="gitHub" value="3" />
             <IDSymbol name="bitbucket" value="4" />
+            <IDSymbol name="sublimeText" value="5" />
+            
+            <!-- Add new buttons here -->
         </GuidSymbol>
     </Symbols>
 </CommandTable>

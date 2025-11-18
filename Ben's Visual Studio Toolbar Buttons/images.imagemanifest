@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Documentation: https://learn.microsoft.com/en-us/visualstudio/extensibility/image-service-and-catalog -->
 <ImageManifest
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -22,9 +23,6 @@
             </Source>
             <Source Uri="$(Resources)/gitextensions-48.png">
                 <Size Value="48" />
-            </Source>
-            <Source Uri="$(Resources)/gitextensions-64.png">
-                <Size Value="64" />
             </Source>
         </Image>
 
@@ -51,5 +49,26 @@
         <Image Guid="$(imageManifest)" ID="4" AllowColorInversion="false">
             <Source Uri="$(Resources)/bitbucket.xaml" />
         </Image>
+        
+        <Image Guid="$(imageManifest)" ID="5" AllowColorInversion="false">
+            <Source Uri="$(Resources)/sublimetext-16.png">
+                <Size Value="16" />
+            </Source>
+            <Source Uri="$(Resources)/sublimetext-24.png">
+                <Size Value="24" />
+            </Source>
+            <Source Uri="$(Resources)/sublimetext-32.png">
+                <Size Value="32" />
+            </Source>
+            <Source Uri="$(Resources)/sublimetext-48.png">
+                <Size Value="48" />
+            </Source>
+        </Image>
+        
+        <!-- Add new buttons here -->
+        <!-- Ensure any new PNG files have their Build Action changed from Content to Resource -->
+        <!-- If images do not appear in VS, try
+               1. Deleting %LOCALAPPDATA%\Microsoft\VisualStudio\*Exp\ImageLibrary\ImageLibrary.cache 
+               2. Rebuilding this extension project (Build often ignores new image files, output DLL can be verified with dnSpy or ILSpy) -->
     </Images>
 </ImageManifest>

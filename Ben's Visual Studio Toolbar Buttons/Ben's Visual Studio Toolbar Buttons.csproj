@@ -69,12 +69,15 @@
     <Compile Include="Commands\Bitbucket.cs" />
     <Compile Include="Commands\GitHub.cs" />
     <Compile Include="Commands\ScmRepoHostingCommand.cs" />
+    <Compile Include="Commands\SublimeText.cs" />
     <Compile Include="Commands\TotalCommander.cs" />
+    <Compile Include="Dependencies\Foregrounder\Foregrounder.cs" />
+    <Compile Include="Dependencies\Foregrounder\User32.cs" />
     <Compile Include="Polyfills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyPackage.cs" />
-    <Compile Include="Unfucked\Processes.cs" />
-    <Compile Include="Unfucked\Strings.cs" />
+    <Compile Include="Dependencies\Unfucked\Processes.cs" />
+    <Compile Include="Dependencies\Unfucked\Strings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -109,6 +112,14 @@
     <Content Include="images.imagemanifest">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Resource Include="Resources\sublimetext-16.png" />
+    <Resource Include="Resources\sublimetext-24.png" />
+    <Resource Include="Resources\sublimetext-32.png" />
+    <Resource Include="Resources\sublimetext-48.png" />
     <Resource Include="Resources\totalcommander-16.png" />
     <Resource Include="Resources\totalcommander-24.png" />
     <Resource Include="Resources\totalcommander-32.png" />
@@ -116,7 +127,6 @@
     <Resource Include="Resources\gitextensions-24.png" />
     <Resource Include="Resources\gitextensions-32.png" />
     <Resource Include="Resources\gitextensions-48.png" />
-    <Resource Include="Resources\gitextensions-64.png" />
     <Resource Include="Resources\gitextensions-16.png" />
     <Content Include="debugging.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>

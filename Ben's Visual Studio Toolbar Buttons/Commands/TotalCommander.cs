@@ -36,22 +36,10 @@ internal sealed class TotalCommander: AbstractButtonCommand {
         }
 
         ProcessStartInfo invocation = new(absoluteFilename) {
-            Arguments = getProjectDir() is {} projectDir ? $@"/o /t ""{projectDir}""" : "/o"
+            Arguments = fetchProjectDir() is {} projectDir ? $@"/o /t ""{projectDir}""" : "/o"
         };
 
         using Process? proc = Process.Start(invocation);
-
-        // DTE                   service   = (DTE) ServiceProvider.GlobalProvider.GetService(typeof(DTE));
-
-        // ProjectQueryableSpace workspace = (await package.GetServiceAsync<IProjectSystemQueryService, IProjectSystemQueryService>()).QueryableSpace;
-        //
-        // await foreach (IQueryResultItem<ISolutionSnapshot> solution in workspace.) {
-        //     string solutionDir = solution.Value.Directory;
-        //     if (!string.IsNullOrWhiteSpace(solutionDir)) {
-        //         invocation.Arguments = $@"browse ""{solutionDir}""";
-        //         break;
-        //     }
-        // }
     }
 
 }

@@ -25,10 +25,10 @@ internal sealed class GitExtensions: AbstractButtonCommand {
         }
 
         ProcessStartInfo invocation = new(schemeHandler.Substring(0, schemeHandler.IndexOf(" openrepo", StringComparison.Ordinal)).Trim('"')) {
-            Arguments = getSolutionDir() is {} solutionDir ? $@"browse ""{solutionDir}""" : string.Empty
+            Arguments = fetchSolutionDir() is {} solutionDir ? $@"browse ""{solutionDir}""" : string.Empty
         };
 
-        using Process proc = Process.Start(invocation);
+        using Process? proc = Process.Start(invocation);
     }
 
 }

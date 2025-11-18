@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Unfucked;
+namespace Aldaviva.VisualStudioToolbarButtons.Dependencies.Unfucked;
 
 /*
  * This file is copied from Aldaviva/Unfucked because NuGet package dependencies can't be loaded in VSIX Visual Studio Extensions.
