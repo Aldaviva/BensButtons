@@ -1,7 +1,9 @@
 #nullable enable
 
+using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
+using System.Collections.Frozen;
 using System.ComponentModel.Design;
 using System.Windows.Forms;
 using Process = System.Diagnostics.Process;
@@ -11,6 +13,8 @@ namespace BensButtons.Commands;
 internal abstract class AbstractButtonCommand {
 
     public static readonly Guid COMMAND_SET = new("61da83b2-5868-4375-9649-92d5e4fabdcc");
+
+    private static readonly FrozenSet<string> PROJECT_FILE_EXTENSIONS = [".csproj", ".fsproj", ".vcproj"];
 
     public required AsyncPackage extensionPackage { get; init; }
     public required DTE2 visualStudio { get; init; }
@@ -37,7 +41,16 @@ internal abstract class AbstractButtonCommand {
 
     protected string? fetchSolutionDir() => visualStudio.Solution?.FullName is { Length: not 0 } solutionFilename ? Path.GetDirectoryName(solutionFilename) : null;
 
-    protected string? fetchProjectDir() => visualStudio.ActiveDocument?.ProjectItem?.ContainingProject?.FullName is {} projectFilename ? Path.GetDirectoryName(projectFilename) : null;
+    protected string? fetchProjectDir() {
+        Document? doc = visualStudio.ActiveDocument;
+        if (doc?.ProjectItem?.ContainingProject?.FullName is {} projectFilename) {
+            return Path.GetDirectoryName(projectFilename);
+        } else if (doc?.FullName is {} filename && PROJECT_FILE_EXTENSIONS.Contains(Path.GetExtension(filename).ToLowerInvariant())) {
+            return Path.GetDirectoryName(filename);
+        } else {
+            return null;
+        }
+    }
 
     protected static bool focusExistingWindow(string processBaseName) {
         Process[] existingProcesses = Process.GetProcessesByName(processBaseName.TrimEnd(1, ".exe"));

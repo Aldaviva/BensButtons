@@ -113,7 +113,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.14.2120" NoWarn="NU1604" />
     <PackageReference Include="Unfucked">
-      <Version>0.0.1-beta.27</Version>
+      <Version>0.0.1-beta.28</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <GeneratePathProperty>true</GeneratePathProperty>
     </PackageReference>
