@@ -1,13 +1,6 @@
 #nullable enable
 
-using Aldaviva.VisualStudioToolbarButtons.Dependencies.Unfucked;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Aldaviva.VisualStudioToolbarButtons.Commands;
+namespace BensButtons.Commands;
 
 internal abstract class ScmRepoHostingCommand: AbstractButtonCommand {
 
@@ -33,18 +26,23 @@ internal abstract class ScmRepoHostingCommand: AbstractButtonCommand {
             string? hostingPath = null;
             try {
                 Uri url = new(upstreamUrl);
-                if (url.Host == hostname) {
+                if (hostname.Equals(url.Host, StringComparison.OrdinalIgnoreCase)) {
                     hostingPath = url.LocalPath;
                 }
             } catch (UriFormatException) {
-                hostingPath = upstreamUrl.Substring(upstreamUrl.IndexOf(':') + 1);
+                int colonIndex = upstreamUrl.LastIndexOf(':');
+                if (colonIndex != -1) {
+                    int    hostStart = upstreamUrl.IndexOf('@', 0, colonIndex) + 1;
+                    string host      = upstreamUrl.Substring(hostStart, colonIndex - hostStart);
+                    if (hostname.Equals(host, StringComparison.OrdinalIgnoreCase)) {
+                        hostingPath = upstreamUrl.Substring(colonIndex + 1);
+                    }
+                }
             }
 
             if (hostingPath is not null) {
                 string[] hostingPaths = hostingPath.TrimEnd(1, ".git").Split(['/'], 3, StringSplitOptions.RemoveEmptyEntries);
-
                 hostingUrl = repoWebUrl(hostingPaths[0], hostingPaths[1]);
-
             }
         } else {
             hostingUrl = fallbackUrl;
@@ -57,7 +55,6 @@ internal abstract class ScmRepoHostingCommand: AbstractButtonCommand {
 
     private static async Task<string> execGit(IEnumerable<string> args, string workingDirectory, CancellationToken cancellationToken) {
         (int exitCode, string stdout, string stderr) = await Processes.ExecFile(GIT_EXECUTABLE, args, workingDirectory: workingDirectory, hideWindow: true, cancellationToken: cancellationToken);
-
         return stdout;
     }
 

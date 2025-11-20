@@ -1,23 +1,21 @@
 #nullable enable
 
-using Aldaviva.VisualStudioToolbarButtons.Commands;
+using BensButtons.Commands;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
-using System;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
-using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-[assembly: ProvideCodeBase(AssemblyName = "Aldaviva.VisualStudioToolbarButtons", Version = "1.0.0.0", CodeBase = "$PackageFolder$\\Aldaviva.VisualStudioToolbarButtons.dll")]
+[assembly: ProvideCodeBase(AssemblyName = "BensButtons", Version = "1.0.0.0", CodeBase = "$PackageFolder$\\BensButtons.dll")]
 
-namespace Aldaviva.VisualStudioToolbarButtons;
+namespace BensButtons;
 
 [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 [Guid(PACKAGE_GUID_STRING)]
 [ProvideMenuResource("Menus.ctmenu", 1)]
-public sealed class MyPackage: AsyncPackage {
+public sealed class BensButtons: AsyncPackage {
 
     public const string PACKAGE_GUID_STRING = "5ab74aa4-0959-41d9-a8a4-ea5dfc612111";
 

@@ -6,23 +6,24 @@
 
     <Commands package="package">
         <Menus>
-            <!-- The Ben's Tools submenu in the VS Tools menu -->
+            <!-- The Ben's Buttons submenu in the VS Tools menu -->
             <Menu guid="commandSet" id="submenu" priority="0x100" type="Menu">
                 <Parent guid="commandSet" id="toolsGroup" />
                 <Strings>
-                    <ButtonText>Ben's Tools</ButtonText>
-                    <CanonicalName>BensTools</CanonicalName>
+                    <ButtonText>Ben's Buttons</ButtonText>
+                    <CanonicalName>BensButtons</CanonicalName>
+                    <LocCanonicalName>BensButtons</LocCanonicalName>
                 </Strings>
             </Menu>
         </Menus>
 
         <Groups>
-            <!-- A group containing the Ben's Tools submenu in the VS Tools menu -->
+            <!-- A group containing the Ben's Buttons submenu in the VS Tools menu -->
             <Group guid="commandSet" id="toolsGroup" priority="0x600">
                 <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
             </Group>
 
-            <!-- All the buttons in the Ben's Tools submenu -->
+            <!-- All the buttons in the Ben's Buttons submenu -->
             <Group guid="commandSet" id="submenuGroup" priority="0x600">
                 <Parent guid="commandSet" id="submenu" />
             </Group>
@@ -35,7 +36,9 @@
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>Bitbucket</ButtonText>
-                    <CanonicalName>Bitbucket</CanonicalName>
+                    <ToolTipText>Browse repository in Bitbucket website</ToolTipText>
+                    <CanonicalName>BensButtons.Bitbucket</CanonicalName>
+                    <LocCanonicalName>BensButtons.Bitbucket</LocCanonicalName>
                 </Strings>
             </Button>
             
@@ -45,7 +48,9 @@
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>Git Extensions</ButtonText>
-                    <CanonicalName>GitExtensions</CanonicalName>
+                    <ToolTipText>Open repository in Git Extensions</ToolTipText>
+                    <CanonicalName>BensButtons.GitExtensions</CanonicalName>
+                    <LocCanonicalName>BensButtons.GitExtensions</LocCanonicalName>
                 </Strings>
             </Button>
 
@@ -55,7 +60,9 @@
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>GitHub</ButtonText>
-                    <CanonicalName>GitHub</CanonicalName>
+                    <ToolTipText>Browse repository in GitHub website</ToolTipText>
+                    <CanonicalName>BensButtons.GitHub</CanonicalName>
+                    <LocCanonicalName>BensButtons.GitHub</LocCanonicalName>
                 </Strings>
             </Button>
             
@@ -65,7 +72,9 @@
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>Sublime Text</ButtonText>
-                    <CanonicalName>SublimeText</CanonicalName>
+                    <ToolTipText>Edit file in Sublime Text</ToolTipText>
+                    <CanonicalName>BensButtons.SublimeText</CanonicalName>
+                    <LocCanonicalName>BensButtons.SublimeText</LocCanonicalName>
                 </Strings>
             </Button>
 
@@ -75,7 +84,9 @@
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <Strings>
                     <ButtonText>Total Commander</ButtonText>
-                    <CanonicalName>TotalCommander</CanonicalName>
+                    <ToolTipText>Browse project directory in Total Commander</ToolTipText>
+                    <CanonicalName>BensButtons.TotalCommander</CanonicalName>
+                    <LocCanonicalName>BensButtons.TotalCommander</LocCanonicalName>
                 </Strings>
             </Button>
             

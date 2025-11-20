@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace Aldaviva.VisualStudioToolbarButtons.Commands;
+namespace BensButtons.Commands;
 
 internal class GitHub: ScmRepoHostingCommand {
 

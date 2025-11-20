@@ -1,13 +1,8 @@
 #nullable enable
 
-using Microsoft.Win32;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Process = System.Diagnostics.Process;
 
-namespace Aldaviva.VisualStudioToolbarButtons.Commands;
+namespace BensButtons.Commands;
 
 internal sealed class TotalCommander: AbstractButtonCommand {
 

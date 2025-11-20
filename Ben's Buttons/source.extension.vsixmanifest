@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="94cf4a43-0e5c-4af3-8321-41df2e49153c" Version="1.0.0" Language="en-US" Publisher="Ben Hutchison" />
-        <DisplayName>Ben's Visual Studio Toolbar Buttons</DisplayName>
+        <Identity Id="CF0ADC8E-AD58-4B27-AE36-D7174595F20C" Version="0.0.1" Language="en-US" Publisher="Ben Hutchison" />
+        <DisplayName>Ben's Buttons</DisplayName>
         <Description xml:space="preserve">Add custom buttons to the Visual Studio toolbar to launch Bitbucket web, Git Extensions, GitHub web, Sublime Text, and Total Commander for the current repo/project/file.</Description>
+        <MoreInfo>https://github.com/Aldaviva/BensButtons</MoreInfo>
         <License>License.txt</License>
         <Icon>ben.ico</Icon>
         <PreviewImage>screenshot1.png</PreviewImage>

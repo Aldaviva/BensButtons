@@ -4,7 +4,7 @@
     <Platform Name="arm64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Ben's Visual Studio Toolbar Buttons/Ben's Visual Studio Toolbar Buttons.csproj" Id="c9442580-1d2f-4e60-8e50-dcf4eabc4550">
+  <Project Path="Ben's Buttons/Ben's Buttons.csproj" Id="c9442580-1d2f-4e60-8e50-dcf4eabc4550">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>

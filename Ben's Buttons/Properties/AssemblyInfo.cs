@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ben's Visual Studio Toolbar Buttons")]
+[assembly: AssemblyTitle("Ben's Buttons")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ben Hutchison")]
-[assembly: AssemblyProduct("Ben's Visual Studio Toolbar Buttons")]
+[assembly: AssemblyProduct("Ben's Buttons")]
 [assembly: AssemblyCopyright("© 2025 Ben Hutchison")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

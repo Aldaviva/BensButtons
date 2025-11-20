@@ -12,13 +12,13 @@ namespace System.Runtime.CompilerServices {
     [ExcludeFromCodeCoverage]
     internal class IsExternalInit;
 
-    // https://stackoverflow.com/a/74447498/979493
+// https://stackoverflow.com/a/74447498/979493
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property, Inherited = false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [ExcludeFromCodeCoverage]
     internal sealed class RequiredMemberAttribute: Attribute;
 
-    // https://stackoverflow.com/a/74447498/979493
+// https://stackoverflow.com/a/74447498/979493
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [ExcludeFromCodeCoverage]

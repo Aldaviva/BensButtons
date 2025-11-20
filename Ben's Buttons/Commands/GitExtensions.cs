@@ -1,12 +1,8 @@
 #nullable enable
 
-using Microsoft.Win32;
-using System;
-using System.Diagnostics;
-using System.Linq;
 using Task = System.Threading.Tasks.Task;
 
-namespace Aldaviva.VisualStudioToolbarButtons.Commands;
+namespace BensButtons.Commands;
 
 internal sealed class GitExtensions: AbstractButtonCommand {
 

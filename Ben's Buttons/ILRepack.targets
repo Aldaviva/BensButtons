@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+If a VSIX package contains NuGet dependencies, their DLLs will get extracted to the extension folder in AppData, but Visual Studio won't load them.
+If you try to force it with ProvidesCodeBase, it will fail because the DLL is outside the appbase.
+Apparently no one on the internet has ever seen this problem before.
+
+Solution: merge the dependencies' DLLs into the extension's DLL at compile time, so a fat DLL is includede in the VSIX with all the necessary library code.
+For this to work, the dependencies to merge must have GeneratePathProperty=true on their PackageReference in the .csproj.
+They should also be set to ExcludeAssets=runtime, so that they are not also included as extra duplicate DLLs inside the VSIX, making it larger than necessary.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="MyILRepack" BeforeTargets="GeneratePkgDef" Condition="true">
+        <ItemGroup>
+            <InputAssemblies Include="$(OutputPath)$(TargetName)$(TargetExt)" />
+
+            <InputAssemblies Include="$(OutputPath)*.dll" Exclude="$(OutputPath)$(TargetName)$(TargetExt)" />
+
+            <InputAssemblies Include="$(PKGUnfucked)\lib\netstandard2.0\Unfucked.dll" />
+            <InputAssemblies Include="$(PKGForegrounder)\lib\net452\Foregrounder.dll" />
+
+            <LibraryPath Include="%(ReferencePathWithRefAssemblies.RelativeDir)" />
+        </ItemGroup>
+
+        <ILRepack
+            Parallel="true"
+            DebugInfo="true"
+            AllowDuplicateResources="false"
+            InputAssemblies="@(InputAssemblies)"
+            TargetKind="SameAsPrimaryAssembly"
+            LibraryPath="@(LibraryPath)"
+            OutputFile="$(OutputPath)..\..\obj\$(Configuration)\$(TargetName)$(TargetExt)" />
+
+    </Target>
+
+    <Target
+        AfterTargets="MyILRepack"
+        Name="MyCleanReferenceCopyLocalPaths"
+        Condition="'$(ClearOutputDirectory)' != 'False'">
+        <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
+        <ItemGroup>
+            <Directories Include="$([System.IO.Directory]::GetDirectories('$(OutDir)%(DestinationSubDirectory)', '*', System.IO.SearchOption.AllDirectories))" />
+            <Directories>
+                <Files>$([System.IO.Directory]::GetFiles("%(Directories.Identity)", "*", System.IO.SearchOption.AllDirectories).get_Length())</Files>
+            </Directories>
+        </ItemGroup>
+        <RemoveDir Directories="@(Directories)" Condition="%(Files)=='0'" />
+    </Target>
+</Project>

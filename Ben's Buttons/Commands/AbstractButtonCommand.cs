@@ -1,19 +1,12 @@
 #nullable enable
 
-using Aldaviva.VisualStudioToolbarButtons.Dependencies.Foregrounder;
-using Aldaviva.VisualStudioToolbarButtons.Dependencies.Unfucked;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
-using System;
 using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Process = System.Diagnostics.Process;
 
-namespace Aldaviva.VisualStudioToolbarButtons.Commands;
+namespace BensButtons.Commands;
 
 internal abstract class AbstractButtonCommand {
 
@@ -50,7 +43,7 @@ internal abstract class AbstractButtonCommand {
         Process[] existingProcesses = Process.GetProcessesByName(processBaseName.TrimEnd(1, ".exe"));
 
         if (existingProcesses.FirstOrDefault() is {} existingProcess) {
-            Foregrounder.BringToForeground(existingProcess.MainWindowHandle);
+            Foregrounder.Foregrounder.BringToForeground(existingProcess.MainWindowHandle);
 
             foreach (Process process in existingProcesses) {
                 process.Dispose();

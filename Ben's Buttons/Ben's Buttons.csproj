@@ -28,8 +28,8 @@
     <ProjectGuid>{C9442580-1D2F-4E60-8E50-DCF4EABC4550}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aldaviva.VisualStudioToolbarButtons</RootNamespace>
-    <AssemblyName>Aldaviva.VisualStudioToolbarButtons</AssemblyName>
+    <RootNamespace>BensButtons</RootNamespace>
+    <AssemblyName>BensButtons</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -71,15 +71,13 @@
     <Compile Include="Commands\ScmRepoHostingCommand.cs" />
     <Compile Include="Commands\SublimeText.cs" />
     <Compile Include="Commands\TotalCommander.cs" />
-    <Compile Include="Dependencies\Foregrounder\Foregrounder.cs" />
-    <Compile Include="Dependencies\Foregrounder\User32.cs" />
+    <Compile Include="GlobalUsings.cs" />
     <Compile Include="Polyfills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MyPackage.cs" />
-    <Compile Include="Dependencies\Unfucked\Processes.cs" />
-    <Compile Include="Dependencies\Unfucked\Strings.cs" />
+    <Compile Include="BensButtons.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ILRepack.targets" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -96,13 +94,29 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Foregrounder">
+      <Version>0.0.1</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <GeneratePathProperty>true</GeneratePathProperty>
+    </PackageReference>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task">
+      <Version>2.0.44.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.14.40265" ExcludeAssets="runtime" NoWarn="NU1604">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.14.2120" NoWarn="NU1604" />
+    <PackageReference Include="Unfucked">
+      <Version>0.0.1-beta.27</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <GeneratePathProperty>true</GeneratePathProperty>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ben.ico">
@@ -160,7 +174,9 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="ClearImageCache" AfterTargets="Build">
+    <!-- VSPackage build often ignores new and updated image assets, leading to missing button icons, so automatically clear cache -->
+    <Delete Files="$(ExtensionsPath)\..\ImageLibrary\ImageLibrary.cache" />
+  </Target>
 </Project>

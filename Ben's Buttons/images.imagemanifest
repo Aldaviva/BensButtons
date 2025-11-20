@@ -6,7 +6,7 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
 
     <Symbols>
-        <String Name="Resources" Value="/Aldaviva.VisualStudioToolbarButtons;Component/Resources" />
+        <String Name="Resources" Value="/BensButtons;Component/Resources" />
         <Guid Name="imageManifest" Value="{07BDF4A9-DEBF-4D4C-AF57-6350FEBCC6CB}" />
     </Symbols>
 
